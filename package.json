@@ -1,0 +1,23 @@
+{
+  "name": "summerbaby-blog",
+  "version": "1.0.0",
+  "description": "PRD --- ### 目标：   做一个 CMS系统，后端采用 Node.js + MongoDB 实现，前端采用 Vue.js做单页应用",
+  "main": "index.js",
+  "scripts": {
+    "test": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SummerBabyPractice/PRD.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SummerBabyPractice/PRD/issues"
+  },
+  "homepage": "https://github.com/SummerBabyPractice/PRD#readme",
+  "dependencies": {
+    "ejs": "^2.5.7",
+    "mongolass": "^3.1.5"
+  }
+}
