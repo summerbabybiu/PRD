@@ -4,7 +4,8 @@
   "description": "PRD --- ### 目标：   做一个 CMS系统，后端采用 Node.js + MongoDB 实现，前端采用 Vue.js做单页应用",
   "main": "index.js",
   "scripts": {
-    "test": "node app.js"
+    "test": "node app.js",
+    "dev": "supervisor app.js"
   },
   "repository": {
     "type": "git",
@@ -17,7 +18,11 @@
   },
   "homepage": "https://github.com/SummerBabyPractice/PRD#readme",
   "dependencies": {
+    "body-parser": "^1.18.2",
+    "cookie-parser": "^1.4.3",
     "ejs": "^2.5.7",
-    "mongolass": "^3.1.5"
+    "express": "^4.15.5",
+    "mongolass": "^3.1.5",
+    "uuid": "^3.1.0"
   }
 }
