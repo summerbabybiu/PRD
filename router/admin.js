@@ -3,6 +3,7 @@
  */
 var express = require('express');
 var router = express.Router();
+var URL = require('url');
 
 router.get('/', function (req, res) {
   res.render('admin', {
@@ -10,4 +11,8 @@ router.get('/', function (req, res) {
   });
 });
 
+router.get('/userLogin', function (req, res) {
+  console.log(111);
+  res.send('qqqq');
+});
 module.exports = router;

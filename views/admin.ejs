@@ -1,9 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title><%= title %></title>
-</head>
-<body>
-
-</body>
-</html>
+<%- include('header') %>
+  <div class="login-area">
+    <div class="username-area">
+      <input class="my-input u-name" type="text" name="uName" placeholder="用户名">
+    </div>
+    <div class="pwd-area">
+      <input class="my-input u-pwd" type="password" name="uPwd" placeholder="密码">
+    </div>
+    <button class="my-btn sure-login-btn">Enter</button>
+  </div>
+<%- include('footer')%>

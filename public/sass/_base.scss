@@ -1,0 +1,71 @@
+@import "compass/reset";
+
+html, body {
+ height: 100%;
+  font-size: 14px;
+}
+* {
+  box-sizing: border-box;
+}
+
+header {
+  position: relative;
+  background-color: rgba(255,255,255,0.95);
+  border-bottom: 1px solid;
+  border-color: #e6e6e6;
+
+  .blog-name {
+    font-size: 40px;
+    padding: 40px 15px;
+
+    @media (max-width: 480px) {
+      font-size: 20px;
+      padding: 15px;
+    }
+  }
+}
+
+footer {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  padding: 40px 15px;
+  text-align: center;
+  border-top: 1px solid #e6e6e6;
+  background-color: #484848;
+  color: #999;
+}
+
+.my-btn {
+  display: block;
+  width: 100%;
+  height: 42px;
+  padding: 8px 12px;
+  line-height: 1.71429;
+  color: #5c5c5c;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #e6e6e6;
+  border-radius: 5px;
+  outline: none;
+
+  &:hover, &:focus {
+    color: #a0a0a0;
+    background-color: #fff;
+    border-color: #ebebeb;
+  }
+}
+
+.my-input {
+  display: block;
+  width: 100%;
+  height: 42px;
+  padding: 8px 12px;
+  line-height: 1.71429;
+  color: #5c5c5c;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #e6e6e6;
+  border-radius: 5px;
+  outline: none;
+}
