@@ -19,12 +19,6 @@ const Mongolass = require('mongolass');
 const mongolass = new Mongolass();
 mongolass.connect('mongodb://localhost:27017/bolg');// const mongolass = new Mongolass('mongodb://localhost:27017/test');
 
-const User = mongolass.model('User');
-User
-  .insertOne({ name: 'summerbaby', pwd: '123456' })
-  .exec()
-  .then(console.log)
-  .catch(console.error);
 
 app.set('views', path.join(__dirname, 'views'));// 设置存放模板文件的目录
 app.set('view engine', 'ejs');// 设置模板引擎为 ejs
@@ -40,7 +34,7 @@ app.get('/article', function (req, res) {
   res.send('article-detail');
 });
 
-app.use('/admin', adminRouter);
+app.use('/admin', adminRouter); //后台页面
 
 app.listen(3000, function () {
   console.log('Server running at http://127.0.0.1:3000');
