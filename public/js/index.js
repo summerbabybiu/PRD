@@ -3,27 +3,49 @@
  */
 (function ($) {
   $('.sure-login-btn').on('click', function () {
-    let uName = $('.u-name').val().trim();
-    let uPwd = $('.u-pwd').val().trim();
+    let uName = $('.login-area .u-name').val().trim();
+    let uPwd = $('.login-area .u-pwd').val().trim();
 
     if(uName && uPwd) {
       console.log(uName, uPwd);
       $(this).val('Entering...');
       $.ajax({
-        url: '/admin/userSingIn',
-        type: 'GET',
-        data: {name: uName, pwd: uPwd},
+        url: '/admin/signin',//login in
+        type: 'Post',
+        data: {username: uName, password: uPwd},
         dataType: "json",
         success: function (data) {
-          if (data['status'] === 0) {
-            console.log('success');
-            // window.location.href = '/admin/wirte';
-          }
+          console.log(data);
+          window.location.href = '/admin';
         },
-        error: function (e) {
-          alert('failed');
+        error: function (jqXHR, textStatus, errorThrown) {
+          alert(textStatus + ':' + jqXHR.responseText);
+          // console.log(jqXHR,textStatus,errorThrown);
         }
       })
     }
   });
+
+  $('.sure-sign-btn').on('click', function () {
+    let uName = $('.sign-area .u-name').val().trim();
+    let uPwd = $('.sign-area .u-pwd').val().trim();
+
+    if(uName && uPwd) {
+      console.log(uName, uPwd);
+      $(this).val('Signing...');
+      $.ajax({
+        url: '/admin/signup', //sign up
+        type: 'Post',
+        data: {username: uName, password: uPwd},
+        dataType: "json",
+        success: function (data) {
+          console.log(data);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+          alert(textStatus + ':' + jqXHR.responseText);
+          // console.log(jqXHR,textStatus,errorThrown);
+        }
+      })
+    }
+  })
 })(jQuery);
