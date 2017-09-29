@@ -13,6 +13,7 @@ var express = require('express');
 var app = express();
 var aboutRouter = require('./router/about');
 var adminRouter = require('./router/admin');
+var postRouter = require('./router/post');
 var path = require('path');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
@@ -47,6 +48,8 @@ app.use('/about', aboutRouter);
 app.get('/article', function (req, res) {
   res.send('article-detail');
 });
+
+app.use('/post', postRouter);
 
 app.use('/admin', adminRouter); //后台页面
 
