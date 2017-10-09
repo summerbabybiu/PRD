@@ -17,6 +17,7 @@ var postRouter = require('./router/post');
 var path = require('path');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
+const middleware = require('./middleware');
 
 
 const ParseServer = require('parse-server').ParseServer;
@@ -42,7 +43,8 @@ app.use(bodyParser.urlencoded({ extended: true})); // 支持 application/x-www-f
 
 // 使用 cookie parser, 所有请求的 cookie都可以用 json的方式拿到
 app.use(cookieParser());
-
+// 允许跨域访问api
+app.use(middleware.CORS);
 
 app.get('/', function (req, res) {
   res.send('hello summerbaby');

@@ -1,5 +1,7 @@
 version: '2'
 services:
+  mongodb:
+    image: mongo
   server:
     build: .
     ports: 
@@ -7,6 +9,4 @@ services:
     volumes:
       - .:/code
     links:
-      - "mongodb:MONGODB_URI"
-  mongodb:
-    image: mongo
+      - "mongodb:mongodb"
