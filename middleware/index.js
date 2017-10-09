@@ -4,14 +4,14 @@ const mono = require('../lib/mono'),
 // 这是一个中间件函数，目的在真的处理一个请求前校验一些信息
 // 比如用户的 sessionToken是否合法，对应的 userid是谁
 exports.requireLogin = function (req, res, next) {
-  mono.querySession(req.cookies.sessionToken)
-    .then(userid => {
-      req.userid = userid
-      next()
-    })
-    .catch(e => {
-      return res.status(401).send(e.message)
-    })
+  Parse.User.become(req.cookies.sessionToken)
+  .then(user => {
+    req.user = user;
+    next()
+  })
+  .catch(e => {
+    res.status(401).send(e.message);
+  })
 }
 
 //分页检查组件， 假如接口的 query没有传这两个参数就填上默认的
