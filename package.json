@@ -6,7 +6,7 @@
   "scripts": {
     "test": "supervisor app.js",
     "dev": "supervisor app.js",
-    "prod": "node app.js"
+    "prod": "export NODE_ENV=prod && node app.js"
   },
   "repository": {
     "type": "git",
