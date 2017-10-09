@@ -22,6 +22,16 @@ const Mongolass = require('mongolass');
 const mongolass = new Mongolass();
 mongolass.connect('mongodb://localhost:27017/test');// const mongolass = new Mongolass('mongodb://localhost:27017/test');
 
+const ParseServer = require('parse-server').ParseServer;
+const config = require('./lib/config');
+
+var parseApi = new ParseServer({
+  databaseURI: 'mongodb://localhost:27017/parse',
+  appId: config.appId,
+  masterKey: config.masterKey,
+  serverURL: config.serverURL
+})
+
 
 app.set('views', path.join(__dirname, 'views'));// 设置存放模板文件的目录
 app.set('view engine', 'ejs');// 设置模板引擎为 ejs
@@ -52,6 +62,8 @@ app.get('/article', function (req, res) {
 app.use('/post', postRouter);
 
 app.use('/admin', adminRouter); //后台页面
+
+app.use('/parse', parseApi);
 
 app.listen(3000, function () {
   console.log('Server running at http://127.0.0.1:3000');
