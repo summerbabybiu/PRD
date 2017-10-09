@@ -3,13 +3,16 @@ const util = require('../lib/utils');
 // 这是一个中间件函数，目的在真的处理一个请求前校验一些信息
 // 比如用户的 sessionToken是否合法，对应的 userid是谁
 exports.requireLogin = function (req, res, next) {
+  if (!util.paramValidator(req.cookies.sessionToken)) {
+    return res.status(401).send('UnAuthorized');
+  }
   Parse.User.become(req.cookies.sessionToken)
   .then(user => {
     req.user = user;
     next()
   })
   .catch(e => {
-    res.status(401).send(e.message);
+    return res.status(401).send(e.message);
   })
 }
 
