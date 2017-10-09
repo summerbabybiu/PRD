@@ -18,11 +18,12 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 
+
 const ParseServer = require('parse-server').ParseServer;
 const config = require('./lib/config');
 
 var parseApi = new ParseServer({
-  databaseURI: 'mongodb://localhost:27017/parse',
+  databaseURI: config.databaseURI,
   appId: config.appId,
   masterKey: config.masterKey,
   serverURL: config.serverURL
