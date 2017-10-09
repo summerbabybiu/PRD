@@ -5,7 +5,8 @@ var express = require('express');
 var router = express.Router();
 var URL = require('url');
 var util = require('../lib/utils');
-var mono = require('../lib/mono');
+const model = require('../lib/model');
+const config = require('../lib/config');
 
 router.get('/', function (req, res) { //展示登录界面
   res.render('admin', {
@@ -28,15 +29,13 @@ router.post('/signup', (req, res) => {
     //参数有空的或者缺少的直接 400 (bad request)
     return res.status(400).send('invalid parameter')
   }
-  mono.createUser(user, password)
-    .then(u => {
-      res.send({
-        'id': u.insertedId,
-      })
-    })
-    .catch(e => {
-      res.status(500).send(e.message)
-    })
+  model.createUser(user, password)
+  .then(user => {
+    res.send(user);
+  })
+  .catch(e => {
+    res.status(e.code).send(e.message);
+  })
 });
 
 router.post('/signin', (req, res) => {
@@ -47,18 +46,14 @@ router.post('/signin', (req, res) => {
     //参数有空的或者缺少的直接 400 (bad request)
     return res.status(400).send('invalid parameter')
   }
-  mono.loginUser(user, password)
-    .then(id => {
-      return mono.createSession(id)
-    })
-    .then(token => {
-      //设置cookie
-      res.cookie('sessionToken', token, { maxAge: 900000, httpOnly: true })
-      res.send('success')
-    })
-    .catch(e => {
-      res.status(400).send(e.message)
-    })
+  model.loginUser(user, password)
+  .then(user => {
+    res.cookie('sessionToken', user.getSessionToken(), {'maxAge': config.sessionMaxAge});
+    res.send(user);
+  })
+  .catch(e => {
+    res.status(e.code).send(e.message);
+  })
 });
 
 module.exports = router;
