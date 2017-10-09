@@ -7,6 +7,7 @@ var URL = require('url');
 var util = require('../lib/utils');
 const model = require('../lib/model');
 const config = require('../lib/config');
+const middleware = require('../middleware');
 
 router.get('/', function (req, res) { //展示登录界面
   res.render('admin', {
@@ -54,6 +55,10 @@ router.post('/signin', (req, res) => {
   .catch(e => {
     res.status(e.code).send(e.message);
   })
+});
+
+router.get('/user', middleware.requireLogin, (req, res) => {
+  res.send(req.user);
 });
 
 module.exports = router;
