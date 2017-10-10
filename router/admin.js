@@ -42,7 +42,6 @@ router.post('/signup', (req, res) => {
 router.post('/signin', (req, res) => {
   let user = req.body.username;
   let password = req.body.password;
-  console.log(req.body);
   if (!util.paramValidator(user) || !util.paramValidator(password)) {
     //参数有空的或者缺少的直接 400 (bad request)
     return res.status(400).send('invalid parameter')
@@ -51,9 +50,8 @@ router.post('/signin', (req, res) => {
   .then(user => {
     res.cookie('sessionToken', user.getSessionToken(), {'maxAge': config.sessionMaxAge});
     res.send(user);
-  })
-  .catch(e => {
-    res.status(e.code).send(e.message);
+  }).catch(e => {
+    res.status(401).send(e.message);
   })
 });
 
