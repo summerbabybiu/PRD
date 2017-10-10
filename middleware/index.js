@@ -30,7 +30,7 @@ exports.pagination = function (req, res, next) {
 }
 
 exports.CORS = function (req, res, next) {
-  res.set('Access-Control-Allow-Origin', '*');
+  res.set('Access-Control-Allow-Origin', 'localhost:8080,localhost,www.summerbaby.me,www.stephenw.cc');
   res.set('Access-Control-Allow-Credentials', 'true');
   next();
 }
