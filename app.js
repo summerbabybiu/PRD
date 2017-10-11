@@ -45,6 +45,7 @@ app.use(bodyParser.urlencoded({ extended: true})); // 支持 application/x-www-f
 app.use(cookieParser());
 // 允许跨域访问api
 app.use(middleware.CORS);
+app.use(middleware.pathLogger);
 
 app.get('/', function (req, res) {
   res.send('hello summerbaby');

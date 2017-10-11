@@ -34,3 +34,8 @@ exports.CORS = function (req, res, next) {
   res.set('Access-Control-Allow-Credentials', 'true');
   next();
 }
+
+exports.pathLogger = function (req, res, next) {
+  console.log(`${req.method} request to path: ${req.path}`);
+  next();
+}
