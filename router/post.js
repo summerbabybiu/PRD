@@ -71,7 +71,6 @@ router.post('/delete', loginRequire, (req, res) => {
     res.send(success);
   })
   .catch(e => {
-
     res.status(e.code).send(e.message);
   })
 })

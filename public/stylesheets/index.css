@@ -143,7 +143,7 @@ footer {
 }
 
 /* line 3, ../sass/index.scss */
-.login-area {
+.login-area, .sign-area {
   position: relative;
   max-width: 400px;
   padding: 15px;
@@ -151,12 +151,12 @@ footer {
 }
 @media (max-width: 480px) {
   /* line 3, ../sass/index.scss */
-  .login-area {
+  .login-area, .sign-area {
     margin: 40px auto 20px;
   }
 }
 /* line 13, ../sass/index.scss */
-.login-area .fill-area {
+.login-area .fill-area, .sign-area .fill-area {
   width: 100%;
   margin-bottom: 20px;
 }

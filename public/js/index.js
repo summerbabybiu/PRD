@@ -40,6 +40,7 @@
         dataType: "json",
         success: function (data) {
           console.log(data);
+          window.location.href = '/admin';
         },
         error: function (jqXHR, textStatus, errorThrown) {
           alert(textStatus + ':' + jqXHR.responseText);
