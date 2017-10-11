@@ -75,4 +75,21 @@ router.post('/delete', loginRequire, (req, res) => {
   })
 })
 
+router.get('/getPost', (req, res) => {
+  let postId = req.query.postid;
+  model.getPost(postId).then(p => {
+    res.send(p);
+  }).catch(e => {
+    res.status(e.code).send(e.message);
+  })
+})
+
+router.get('/getByPathForArticle/:postid', (req, res) => {
+  let postId = req.params.postid;
+  model.getPost(postId).then(p => {
+    res.send(p);
+  }).catch(e => {
+    res.status(e.code).send(e.message);
+  })
+})
 module.exports = router;
